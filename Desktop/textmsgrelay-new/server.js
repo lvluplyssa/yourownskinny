@@ -75,17 +75,21 @@ async function startServer () {
       return res.status(401).send('Unauthorized');
     }
 
-    switch (req.body.alert_type) {
-      case 'message_sent':
+    try {
+      switch (req.body.alert_type) {
+        case 'message_sent':
         // code block
-        await handleMsgSent(req, res);
-        break;
-      case 'message_inbound':
+          await handleMsgSent(req, res);
+          break;
+        case 'message_inbound':
         // code block
-        await handleMsgReceived(req, res, textHeaders);
-        break;
-      default:
+          await handleMsgReceived(req, res, textHeaders);
+          break;
+        default:
       // code block
+      }
+    } catch (error) {
+      return res.status(400).send(error);
     }
   });
 

@@ -11,7 +11,6 @@ module.exports = async function sendImessage ({ message, recipient, userSetting,
     sender_name: userSetting.senderName
   };
   try {
-
     const response = await axios.post(MSG_URL, textData, { headers: textHeaders });
 
     // if systemPrompt received from owner
