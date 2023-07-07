@@ -21,6 +21,7 @@ module.exports = async function sendImessage ({ message, recipient, userSetting,
         instructions: response.data.text.match(/{(.*?)}/)[1],
         from: recipient
       };
+
       // Find The User Settings of the request being made
       if (!userSetting) {
         throw new Error('User settings not found');

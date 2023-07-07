@@ -4,6 +4,7 @@ const checkForInterruption = require('./checkForInterruption');
 const checkForInterruptionMultiple = require('./checkForInterruptionMultiple');
 const sendImessage = require('./sendImessage');
 const Conversation = require('../models/conversation');
+const Message = require('../models/message');
 
 const configuration = new Configuration({
   apiKey: process.env.AI_SECRET_KEY
@@ -58,10 +59,12 @@ module.exports = async function processAIResponse ({
 
 
     setTimeout(async () => {
-      const additionalComments = checkForInterruption(userMessagesCount, conversation, messages);
-      if (additionalComments !== aiMessages[messages.length - 1].content) {
+      const additionalComments = checkForInterruption(userMessagesCount, conversation, aiMessages);
+      const lastMessageInDB = await Message.findOne({ conversation: conversation._id }).sort({ createdAt: -1 });
+
+      if (additionalComments !== lastMessageInDB.content) {
         await Conversation.updateOne({ _id: conversation._id }, { stillTyping: false });
-        throw new Error('interrupted');
+        return;
       }
 
       let lastMessage = aiMessages[aiMessages.length - 1];

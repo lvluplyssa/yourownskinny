@@ -20,9 +20,9 @@ module.exports = async function handleMsgSent (req, res) {
     if (existingConversation.stillTyping) {
       return res.status(200).json(nowTyping);
     } else {
-      return res.status(200).send('no typing indicator needed');
+      return res.status(200);
     }
   } else {
-    return res.status(400).send('No existing conversation');
+    return res.status(200);
   }
 };

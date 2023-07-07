@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const messageSchema = new mongoose.Schema({
   role: String,
   content: String,
-  conversation: [{ type: mongoose.Schema.Types.ObjectId, ref: 'conversation' }]
+  conversation: { type: mongoose.Schema.Types.ObjectId, ref: 'conversation' }
 }, { timestamps: true });
 
 messageSchema.set('toObject', { virtuals: true });
