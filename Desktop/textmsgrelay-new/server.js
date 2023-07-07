@@ -70,6 +70,7 @@ async function startServer () {
   });
 
   app.post('/inbound', async function (req, res) {
+    console.log(req.body);
     // authorized only
     if (req.headers['authorization'] !== MSG_TOKEN) {
       return res.status(401).send('Unauthorized');
