@@ -17,7 +17,7 @@ module.exports = async function handleMsgSent (req, res) {
   };
 
   if (existingConversation) {
-    if (existingConversation.stillTyping > 0) {
+    if (existingConversation.stillTyping) {
       return res.status(200).json(nowTyping);
     } else {
       return res.status(200);
