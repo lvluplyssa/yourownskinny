@@ -1,0 +1,68 @@
+#stage {
+    opacity:0;
+    padding:20px;
+}
+#stage.anim {
+    animation: stageAnimation 8s forwards;
+}
+.user {
+
+    animation: hover 600ms infinite;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.imagewrap {
+    height: 0;
+    overflow: hidden;
+    padding-bottom:100%;
+    position: relative;
+    width: 100%;
+    border-radius: 100%;
+}
+.imagewrap img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+}
+.infowrap {
+    margin-top:20px;
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+    font-size: 3em;
+    padding:0 20px;
+}
+name {
+    color: #e994e9;
+
+}
+
+@keyframes stageAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+        opacity: 1;
+      }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes hover {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
