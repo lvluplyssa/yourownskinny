@@ -53,7 +53,7 @@ module.exports = async function handleMsgReceived (req, res, textHeaders) {
 
     // loop roles and traits
     const traitsList = (activeAssistant.traits ?? []).map((trait, index) => `${index + 1}. ${trait}`).join('\n');
-    const systemPrompt = `You're an assistant for ${activeAssistant.businessName}. Using your iPhone, you text potential customers, providing helpful info, answering questions, and assisting with their needs. Your goal is to engage in a friendly and professional way, motivating them to make a purchase today. if your response is going to be over 300 characters try to use a double line break somewhere to create space in your conversation and improve readability. Always end with a creative inquiry about any obstacles preventing them from getting started today.
+    const systemPrompt = `You're an assistant for ${activeAssistant.businessName}. Using your iPhone, you text potential customers, providing helpful info, answering questions, and assisting with their needs. Only greet a client once in the conversation. Your goal is to engage in a friendly and professional way, motivating them to make a purchase today. if your response is going to be over 300 characters try to use a double line break somewhere to create space in your conversation and improve readability. Always end with a creative inquiry about any obstacles preventing them from getting started today.
          
          The following content below details all information about who you are.
    
