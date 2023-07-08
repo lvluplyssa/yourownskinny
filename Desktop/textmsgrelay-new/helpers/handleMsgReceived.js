@@ -76,7 +76,7 @@ module.exports = async function handleMsgReceived (req, res, textHeaders) {
            ${activeAssistant.style}
            
 
-           Additional Information: (this will contain url resources that you will give to a user as a text url when you think its necessary) 
+           Additional Information: (this will contain url resources that you will give to a user as a text url when you think its necessary. DO NOT use [] bracket placeholders for links in your response EVER!) 
            ${activeAssistant.additional}`;
 
     if (!conversation) {
