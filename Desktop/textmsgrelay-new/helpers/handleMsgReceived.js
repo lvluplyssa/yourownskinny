@@ -13,7 +13,7 @@ const processAIResponse = require('./processAIResponse');
 
 module.exports = async function handleMsgReceived (req, res, textHeaders) {
   const { recipient, sender_name, text, speech } = req.body;
-
+  console.log(req.body);
   // if empty we outta here
   if (!text && !speech?.text) {
     return res.status(400).json({ typing: 0 });
