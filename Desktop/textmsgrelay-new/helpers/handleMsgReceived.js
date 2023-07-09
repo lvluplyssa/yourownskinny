@@ -121,7 +121,6 @@ module.exports = async function handleMsgReceived (req, res, textHeaders) {
     // lets count current messages
     const conversationMessagesAfterUpdate = await Message.find({ conversation: conversation._id });
     const userMessagesCount = conversationMessagesAfterUpdate.filter(message => message.role === 'user').length;
-     console.log(conversationMessagesAfterUpdate);
     const processAIArgs = {
       messages: conversationMessagesAfterUpdate,
       conversation,
