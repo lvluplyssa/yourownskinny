@@ -4,12 +4,17 @@ const UserSetting = require('../models/userSetting');
 const Conversation = require('../models/conversation');
 const Message = require('../models/message');
 
-module.exports = async function sendImessage ({ message, recipient, userSetting, conversation, textHeaders }) {
+module.exports = async function sendImessage ({ message, recipient, userSetting, conversation, textHeaders, isSms }) {
   const textData = {
     recipient,
     text: message,
     sender_name: userSetting.senderName
   };
+
+  if(isSms) {
+    textData.sms = isSms;
+  }
+
   try {
     const response = await axios.post(MSG_URL, textData, { headers: textHeaders });
 

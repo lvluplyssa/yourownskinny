@@ -13,7 +13,6 @@ const processAIResponse = require('./processAIResponse');
 
 module.exports = async function handleMsgReceived (req, res, textHeaders) {
   const { recipient, sender_name, text, speech } = req.body;
-  console.log(req.body);
   // if empty we outta here
   if (!text && !speech?.text) {
     return res.status(400).json({ typing: 0 });
@@ -25,6 +24,9 @@ module.exports = async function handleMsgReceived (req, res, textHeaders) {
   if (!userMessage) {
     throw new Error('No text received');
   }
+
+  //test for sms
+  const isSms = req.body.delivery_type === 'sms';
 
   try {
     // Find The User Settings of the request being made
@@ -128,7 +130,8 @@ module.exports = async function handleMsgReceived (req, res, textHeaders) {
       userSetting,
       userMessagesCount,
       readTime,
-      textHeaders
+      textHeaders,
+      isSms
     };
          
     if (!userSetting.businessHours) {

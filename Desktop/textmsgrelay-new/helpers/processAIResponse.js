@@ -21,7 +21,8 @@ module.exports = async function processAIResponse ({
   userSetting,
   userMessagesCount,
   readTime,
-  textHeaders
+  textHeaders,
+  isSms
 }) {
   try {
     console.log('in process');
@@ -70,7 +71,7 @@ module.exports = async function processAIResponse ({
       let lastMessage = aiMessages[aiMessages.length - 1];
 
       // Process the first message immediately
-      lastMessage = await sendImessage({ message: lines[0], recipient, userSetting, conversation, textHeaders });
+      lastMessage = await sendImessage({ message: lines[0], recipient, userSetting, conversation, textHeaders, isSms });
 
       // Process remaining message by calculating their word count
       const timeouts = [];
@@ -95,7 +96,7 @@ module.exports = async function processAIResponse ({
             return;
           }
 
-          lastMessage = await sendImessage({ message: lines[i], recipient, userSetting, conversation, textHeaders });
+          lastMessage = await sendImessage({ message: lines[i], recipient, userSetting, conversation, textHeaders, isSms });
         }, accumulatedDelay);
       }
 

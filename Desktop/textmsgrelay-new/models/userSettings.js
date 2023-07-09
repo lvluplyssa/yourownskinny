@@ -10,6 +10,8 @@ const userSettingsSchema = new mongoose.Schema({
   assistants: [Number],
   owners: [{ recipient: String, name: String }],
   senderName: String,
+  dialCode: String,
+  senderNumber: String,
   ownerInstructions: [String]
 }, { timestamps: true });
 
