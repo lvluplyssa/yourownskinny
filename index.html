@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=https://yourownskinny.myshopify.com/">
+    <script>
+        window.onload = function() {
+            const currentPath = window.location.pathname + window.location.search + window.location.hash;
+            if (!currentPath.startsWith('/.well-known/')) {
+                window.location.href = 'https://yourownskinny.myshopify.com/' + currentPath;
+            }
+        };
+    </script>
+    <title>Redirecting...</title>
+</head>
+<body>
+    If you are not redirected automatically, follow this <a href="https://yourownskinny.myshopify.com/">link to Shopify store</a>.
+</body>
+</html>
